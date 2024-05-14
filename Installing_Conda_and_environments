@@ -1,0 +1,42 @@
+#first must log into Ada - replace mbygk5 with your own nottingham username
+
+ssh mbygk5@hpclogin02.ada.nottingham.ac.uk
+
+
+
+##########had to install conda to Ada to use environments###############
+
+#to download:
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+
+#to install:
+
+bash Miniconda3-latest-Linux-x86_64.sh
+
+#say yes to everyhting it asls during the install process
+#close and re-open shell
+
+#initialising conda for the current station
+eval "$(/gpfs01/home/mbygk5/miniconda3/bin/conda shell.bash hook)"
+
+#verify installation
+conda --version
+
+#add conda to PATH temporarily
+export PATH=~/miniconda3/bin:$PATH
+
+#add conda to PATH permenantly 
+nano ~/.bashrc
+#then add the following line to the end of the file 
+export PATH=~/miniconda3/bin:$PATH
+
+#reload '.bashrc' to apply changes immediately
+source ~/.bashrc
+
+
+#run the following command to have base environment automa
+
+conda config --set auto_activate_base true
+conda deactivate
