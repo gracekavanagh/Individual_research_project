@@ -88,24 +88,6 @@ source /gpfs01/home/mbygk5/miniconda3/bin/activate
 
 
 
-################moving bash scripts onto ADA###################
-
-scp /Users/gracekavanagh/Desktop/individual_research_project/viewing_vcf_with_gatk.sh mbygk5@hpclogin02.ada.nottingham.ac.uk:/gpfs01/home/mbygk5/individual_project/
-
-
-#run my bash script with 
-
-conda activate gatk_env
-
-sbatch viewing_vcf_with_gatk.ssh
-
-#check my job with 
-
-squeue -l -u mbygk5
-
-
-
-
 ######################creating env with bcftools and samtools##################
 
 source /gpfs01/home/mbygk5/miniconda3/bin/activate
@@ -142,4 +124,4 @@ conda install -c conda-forge slim
 # Verify the installation
 slim --version
 
-
+*******pretty sure need to add pandas here?***********
