@@ -1,0 +1,145 @@
+#first must log into Ada - replace mbygk5 with your own nottingham username
+
+ssh mbygk5@hpclogin02.ada.nottingham.ac.uk
+
+
+##########had to install conda to Ada to use environments###############
+
+#to download:
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+
+#to install:
+
+bash Miniconda3-latest-Linux-x86_64.sh
+
+#say yes to everyhting it asls during the install process
+#close and re-open shell
+
+#initialising conda for the current station
+eval "$(/gpfs01/home/mbygk5/miniconda3/bin/conda shell.bash hook)"
+
+#verify installation
+conda --version
+
+#add conda to PATH temporarily
+export PATH=~/miniconda3/bin:$PATH
+
+#add conda to PATH permenantly 
+nano ~/.bashrc
+#then add the following line to the end of the file 
+export PATH=~/miniconda3/bin:$PATH
+
+#reload '.bashrc' to apply changes immediately
+source ~/.bashrc
+
+
+#run the following command to have base environment automa
+
+conda config --set auto_activate_base true
+conda deactivate
+
+
+
+
+
+##########creating a gatk environment#############
+
+# Create a new Conda environment with GATK
+conda create -n gatk_env -c bioconda gatk4
+
+# Activate the environment
+conda activate gatk_env
+
+# solidifying changes
+source ~/.bashrc
+
+# Re-activate the environment
+conda activate gatk_env
+
+# Verify the installation
+gatk --version
+
+
+
+
+#########downloading miniconda###############
+
+#wget wouldn't work :( 
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+
+#then transfer over to ada
+
+
+scp /Users/gracekavanagh/Desktop/Miniconda3-latest-Linux-x86_64.sh mbygk5@hpclogin02.ada.nottingham.ac.uk:/gpfs01/home/mbygk5
+
+
+
+#then need to activate the environment
+
+bash Miniconda3-latest-Linux-x86_64.sh
+
+#activate miniconda
+source /gpfs01/home/mbygk5/miniconda3/bin/activate
+
+
+
+
+
+################moving bash scripts onto ADA###################
+
+scp /Users/gracekavanagh/Desktop/individual_research_project/viewing_vcf_with_gatk.sh mbygk5@hpclogin02.ada.nottingham.ac.uk:/gpfs01/home/mbygk5/individual_project/
+
+
+#run my bash script with 
+
+conda activate gatk_env
+
+sbatch viewing_vcf_with_gatk.ssh
+
+#check my job with 
+
+squeue -l -u mbygk5
+
+
+
+
+######################creating env with bcftools and samtools##################
+
+source /gpfs01/home/mbygk5/miniconda3/bin/activate
+
+conda create -n samtools_bcftools_env -c conda-forge -c bioconda samtools bcftools -y
+
+source ~/.bashrc
+
+
+conda activate samtools_bcftools_env
+
+
+######################combining envs################
+
+conda create -n combined_env -c bioconda gatk4 samtools bcftools
+
+
+#####################installing SLiM########################
+
+
+conda create --name slim_env python=3.8
+
+Activate the new environment
+conda activate slim_env
+
+#wouldnt work with conda install initially so doing this extra step 
+#Ensure conda-forge channel is added
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+
+# Step 2: Install SLiM from conda-forge
+conda install -c conda-forge slim
+
+# Verify the installation
+slim --version
+
+
