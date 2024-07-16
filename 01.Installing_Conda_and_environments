@@ -124,4 +124,20 @@ conda install -c conda-forge slim
 # Verify the installation
 slim --version
 
+
+
+
 *******pretty sure need to add pandas here?***********
+
+
+
+
+# Create the Conda environment
+conda create -n GIFT_env python=3.8
+
+# Activate the Conda environment
+conda activate GIFT_env
+
+# Install the required packages
+conda install -c conda-forge argparse pandas numpy scipy
+
