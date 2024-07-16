@@ -139,5 +139,5 @@ conda create -n GIFT_env python=3.8
 conda activate GIFT_env
 
 # Install the required packages
-conda install -c conda-forge argparse pandas numpy scipy
+conda install -c conda-forge pandas numpy scipy
 
