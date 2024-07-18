@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the phenotype data
-phenotype_df = pd.read_csv("/gpfs01/home/mbygk5/individual_project/step_1_GIFT_and_GWAS/phenotypes.txt", sep="\t")
+phenotype_df = pd.read_csv("/gpfs01/home/mbygk5/individual_project/assigning_phenotype/phenotypes.csv")
 
 # Display basic information
 print(phenotype_df.head())  # Display the first few rows
