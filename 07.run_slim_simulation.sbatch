@@ -6,18 +6,18 @@
 #SBATCH --mem=250g
 #SBATCH --time=10:00:00
 #SBATCH --job-name=SLiM
-#SBATCH --output=/gpfs01/home/mbygk5/individual_project/assigning_phenotype/ERROR_for_combined_thing.out
+#SBATCH --output=/gpfs01/home/mbygk5/individual_project/assigning_phenotype/SLiM_simulation.out
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=mbygk5@exmail.nottingham.ac.uk
 
-
-# Activate the Conda environment
+# Load necessary modules and activate Conda environment
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate slim_env
-
+conda activate slim_env  # Adjust to your Conda environment name
 
 # Run the generated SLiM script
 slim /gpfs01/home/mbygk5/individual_project/assigning_phenotype/thaliana.slim
 
-# Deactivate the Conda environment
+# Deactivate Conda environment
 conda deactivate
+
+echo "SLiM simulation completed successfully."
