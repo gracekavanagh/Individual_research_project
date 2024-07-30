@@ -14,7 +14,7 @@ Through these techniques, we aim to assess the efectiveness of the GIFT method a
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [Data Description](#Data description)
+
 
 
 
