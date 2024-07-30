@@ -2,16 +2,12 @@
 
 ssh mbygk5@hpclogin02.ada.nottingham.ac.uk
 
-
 ##########had to install conda to Ada to use environments###############
 
 #to download:
-
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-
 #to install:
-
 bash Miniconda3-latest-Linux-x86_64.sh
 
 #say yes to everyhting it asls during the install process
@@ -34,9 +30,7 @@ export PATH=~/miniconda3/bin:$PATH
 #reload '.bashrc' to apply changes immediately
 source ~/.bashrc
 
-
 #run the following command to have base environment automa
-
 conda config --set auto_activate_base true
 conda deactivate
 
@@ -44,21 +38,18 @@ conda deactivate
 
 
 
+
 ##########creating a gatk environment#############
 
-# Create a new Conda environment with GATK
+# Ccreate a GATK conda env
 conda create -n gatk_env -c bioconda gatk4
 
-# Activate the environment
+# activate the environment
 conda activate gatk_env
 
 # solidifying changes
 source ~/.bashrc
-
-# Re-activate the environment
 conda activate gatk_env
-
-# Verify the installation
 gatk --version
 
 
@@ -66,19 +57,15 @@ gatk --version
 
 #########downloading miniconda###############
 
-#wget wouldn't work :( 
+#wget wouldn't work so did the following on my computer and transferrred over
 curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-
 #then transfer over to ada
-
-
 scp /Users/gracekavanagh/Desktop/Miniconda3-latest-Linux-x86_64.sh mbygk5@hpclogin02.ada.nottingham.ac.uk:/gpfs01/home/mbygk5
 
 
 
 #then need to activate the environment
-
 bash Miniconda3-latest-Linux-x86_64.sh
 
 #activate miniconda
