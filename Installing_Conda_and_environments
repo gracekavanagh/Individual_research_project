@@ -35,10 +35,6 @@ conda config --set auto_activate_base true
 conda deactivate
 
 
-
-
-
-
 ##########creating a gatk environment#############
 
 # Ccreate a GATK conda env
@@ -52,9 +48,6 @@ source ~/.bashrc
 conda activate gatk_env
 gatk --version
 
-
-
-
 #########downloading miniconda###############
 
 #wget wouldn't work so did the following on my computer and transferrred over
@@ -63,16 +56,11 @@ curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 #then transfer over to ada
 scp /Users/gracekavanagh/Desktop/Miniconda3-latest-Linux-x86_64.sh mbygk5@hpclogin02.ada.nottingham.ac.uk:/gpfs01/home/mbygk5
 
-
-
 #then need to activate the environment
 bash Miniconda3-latest-Linux-x86_64.sh
 
 #activate miniconda
 source /gpfs01/home/mbygk5/miniconda3/bin/activate
-
-
-
 
 
 ######################creating env with bcftools and samtools##################
@@ -83,17 +71,13 @@ conda create -n samtools_bcftools_env -c conda-forge -c bioconda samtools bcftoo
 
 source ~/.bashrc
 
-
 conda activate samtools_bcftools_env
-
 
 ######################combining envs################
 
 conda create -n combined_env -c bioconda gatk4 samtools bcftools
 
-
 #####################installing SLiM########################
-
 
 conda create --name slim_env python=3.8
 
@@ -105,26 +89,46 @@ conda activate slim_env
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 
-# install SLiM from conda-forge
+#install SLiM from conda-forge
 conda install -c conda-forge slim
 
-# verify the installation
+#verify the installation
 slim --version
 
-
-
-
-*******pretty sure need to add pandas here?***********
-
-
-
-
-# create  Conda environment
+########GIFT#########
+#create  Conda environment
 conda create -n GIFT_env python=3.8
 
-# activate the environment
+#activate the environment
 conda activate GIFT_env
 
 # install the packages we requireed
 conda install -c conda-forge pandas numpy scipy
+
+###########have to create gatk environment for GIFT############
+
+conda create -n ngs_pipe_env_gatk4 python=3.8
+conda activate ngs_pipe_env_gatk4
+conda install pandas numpy
+conda install -c bioconda gatk4
+
+
+#then want to install r within this env
+conda install -c conda-forge r-base r-essentials
+Rscript -e "install.packages(c('dplyr', 'ggplot2', 'tidyr'), repos='http://cran.rstudio.com/')"
+
+######################GWAS env########################
+
+#create the  environment
+conda create -n GWAS_env python=3.8
+
+# Activate the  environment
+conda activate GWAS_env
+
+conda install -c bioconda plink
+conda install -c bioconda gcta
+
+
+
+
 
