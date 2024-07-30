@@ -10,14 +10,14 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=mbygk5@exmail.nottingham.ac.uk
 
-# Load necessary modules and activate Conda environment
+#activating our environment
 source ~/miniconda3/etc/profile.d/conda.sh
-conda activate slim_env  # Adjust to your Conda environment name
+conda activate slim_env 
 
-# Run the generated SLiM script
+#running the SLiM script
 slim /gpfs01/home/mbygk5/individual_project/assigning_phenotype/thaliana.slim
 
-# Deactivate Conda environment
+#deactivating environment
 conda deactivate
 
-echo "SLiM simulation completed successfully."
+
