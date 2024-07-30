@@ -14,12 +14,12 @@ import numpy as np
 import pandas as pd
 
 # Paths to your data files
-genome_path = "/gpfs01/home/mbygk5/individual_project/SLiM/Thaliana_genome_clean.fas"
-allele_freqs_path = "/gpfs01/home/mbygk5/individual_project/thaliana_SNP_analysis/thaliana_snp_analysis_allele_frequencies.txt"
-slim_script_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/thaliana.slim"
-full_output_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/simulation_output.txt"
-population_stats_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/population_stats.txt"
-ionome_data_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/master_list.csv"
+genome_path = "/gpfs01/home/mbygk5/individual_project/test/Thaliana_genome_clean.fas"
+allele_freqs_path = "/gpfs01/home/mbygk5/individual_project/test/allele_freqs_cleaned.txt"
+slim_script_path = "/gpfs01/home/mbygk5/individual_project/test/thaliana.slim"
+full_output_path = "/gpfs01/home/mbygk5/individual_project/test/simulation_output.txt"
+population_stats_path = "/gpfs01/home/mbygk5/individual_project/test/population_stats.txt"
+ionome_data_path = "/gpfs01/home/mbygk5/individual_project/test/master_list.csv"
 
 
 # Parameters
