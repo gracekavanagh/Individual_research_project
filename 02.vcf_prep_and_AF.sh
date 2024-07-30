@@ -61,8 +61,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+bcftools index filled_af.vcf.gz
+
 echo "Job completed successfully at $(date)"
 
 #table.txt contains SNP info with AF
-#ouput filled_af.vcf.gz is the vcf i then put into the next bit of code (i.e. vcf with af)
+#ouput filled_af.vcf.gz is the vcf 
 
