@@ -20,7 +20,7 @@ slim_script_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/t
 full_output_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/simulation_output.txt"
 population_stats_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/population_stats.txt"
 ionome_data_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/master_list.csv"
-phenotypes_output_path = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/phenotypes.csv"
+
 
 # Parameters
 frequency_threshold = 0.9
@@ -167,12 +167,6 @@ def create_slim_script(genome, allele_freqs, background_phenotypes, output_path)
             f.write("3 late() {\n")
             f.write(f"    sim.outputFull(\"{full_output_path}\");\n")
             f.write(f"    writeFile(\"{population_stats_path}\", asString(sim.subpopulations[0].individualCount));\n")
-
-            # Extract phenotypes and save to CSV using SLiM's runCommand()
-            f.write("    // Extract phenotypes and save to CSV\n")
-            f.write(f"    phenotypes_output_path = \"{phenotypes_output_path}\";\n")
-            f.write(f"    cmd = \"python3 -c 'import pandas as pd; df = pd.read_csv(\\\"{full_output_path}\\\", sep=\\\",\\\", header=None); df.to_csv(\\\"{phenotypes_output_path}\\\", index=False)'\";\n")
-            f.write("    runCommand(cmd);\n")
 
             f.write("    sim.simulationFinished();\n")
             f.write("}\n")
