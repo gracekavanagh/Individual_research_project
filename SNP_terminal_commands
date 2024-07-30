@@ -1,0 +1,26 @@
+#identifies gene IDs for top 5 SNPs
+grep -w "Chr1" intersected_snps_with_genes.bed | grep -w "17525838"
+grep -w "Chr3" intersected_snps_with_genes.bed | grep -w "7261022"
+grep -w "Chr5" intersected_snps_with_genes.bed | grep -w "7562400"
+grep -w "Chr5" intersected_snps_with_genes.bed | grep -w "14761592"
+grep -w "Chr1" intersected_snps_with_genes.bed | grep -w "17525697"
+
+
+#then had to download GFF3 file for thaliana genome ----
+https://www.arabidopsis.org/download/list?dir=Genes%2FTAIR10_genome_release%2FTAIR10_gff3
+TAIR10_GFF3_genes.gff
+
+#had to change chrom looking like'1' to looking like 'Chr1' with the following code:
+sed -i '' 's/^1/Chr1/' significant_snps.bed
+sed -i '' 's/^2/Chr2/' significant_snps.bed
+sed -i '' 's/^3/Chr3/' significant_snps.bed
+sed -i '' 's/^4/Chr4/' significant_snps.bed
+sed -i '' 's/^5/Chr5/' significant_snps.bed
+
+#run this code to intersect
+bedtools intersect -a significant_snps.bed -b TAIR10_GFF3_genes.gff -wa -wb > intersected_snps_with_genes.bed
+#creating a file with only genes:
+awk -F'\t' '$6 == "gene"' intersected_snps_with_genes.bed > genes_only.bed
+#extracting gene IDs 
+awk -F'\t' '{split($12, a, ";"); for (i in a) if (a[i] ~ /^ID=/) {split(a[i], b, "="); print b[2]}}' genes_only.bed | sort | uniq > gene_ids.txt
+#68 gene IDs
