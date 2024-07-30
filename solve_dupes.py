@@ -1,7 +1,5 @@
-from collections import defaultdict
-
-allele_freqs_file = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/$
-cleaned_file = "/gpfs01/home/mbygk5/individual_project/assigning_phenotype/allel$
+allele_freqs_file = "/gpfs01/home/mbygk5/individual_project/test/allele_freqs_with_positions.txt"
+cleaned_file = "/gpfs01/home/mbygk5/individual_project/test/allele_freqs_cleaned.txt"
 
 freq_dict = defaultdict(list)
 
@@ -20,4 +18,3 @@ with open(cleaned_file, 'w') as outfile:
         outfile.write(f"{pos} {avg_freq:.8f}\n")
 
 print(f"Cleaned allele frequencies saved to {cleaned_file}")
-
