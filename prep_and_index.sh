@@ -9,7 +9,7 @@
 #SBATCH --mem=50g
 #SBATCH --time=10:00:00
 #SBATCH --job-name=thaliana_SNP_analysis
-#SBATCH --output=/gpfs01/home/mbygk5/individual_project/thaliana_SNP_analysis.out
+#SBATCH --output=/gpfs01/home/mbygk5/individual_project/test/thaliana_SNP_analysis.out
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=mbygk5@exmail.nottingham.ac.uk
 
