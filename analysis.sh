@@ -14,36 +14,32 @@
 
 
 
-# Define input and output files
+# input and output files
 VCF_FILE='/gpfs01/home/mbygk5/individual_project/test/filled_af.vcf.gz'
 REF_GENOME='/gpfs01/home/mbygk5/individual_project/test/Thaliana_genome.fas'
 OUTPUT_PREFIX='/gpfs01/home/mbygk5/individual_project/test/thaliana_snp_analysis'
 
-# Index the reference genome if not already indexed
+# index reference genome
 if [ ! -f "${REF_GENOME}.fai" ]; then
     echo "Indexing reference genome"
     samtools faidx $REF_GENOME
 fi
 
-# Index the VCF file if not already indexed
+# index VCF
 if [ ! -f "${VCF_FILE}.tbi" ]; then
     echo "Indexing VCF file"
     bcftools index -t $VCF_FILE
 fi
 
-# Running GATK VariantsToTable
+# VarientsToTables to make our data easier to read
 echo "Running GATK VariantsToTable"
 gatk --java-options '-DGATK_STACKTRACE_ON_USER_EXCEPTION=true' VariantsToTable \
     -V $VCF_FILE \
     -F CHROM -F POS -F REF -F ALT -F QUAL -F DP \
     -O ${OUTPUT_PREFIX}_variants_table.txt
 
-# Running BCFtools query
-echo "Running BCFtools query"
+#  BCFtools query and stats
 bcftools query -f '%CHROM\t%POS\t%AF\n' $VCF_FILE > ${OUTPUT_PREFIX}_allele_frequencies.txt
-
-# Running BCFtools stats
-echo "Running BCFtools stats"
 bcftools stats $VCF_FILE > ${OUTPUT_PREFIX}_bcftools_stats.txt
 
-echo "Job completed successfully at $(date)"
+
