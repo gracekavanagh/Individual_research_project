@@ -10,16 +10,15 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=mbygk5@exmail.nottingham.ac.uk
 
-echo "Starting job at $(date)"
 
-# Define input and output files
+# input file and cretaing output file
 INPUT_FASTA="/gpfs01/home/mbygk5/individual_project/test/Thaliana_genome.fas"
 OUTPUT_FASTA="/gpfs01/home/mbygk5/individual_project/test/Thaliana_genome_clean.fas"
 
-# Copy the input FASTA file to the output location
+# copying the input FASTA file to the output location
 cp $INPUT_FASTA $OUTPUT_FASTA
 
-# Replace ambiguous nucleotide codes
+# replacing the ambiguous nucleotides
 echo "Replacing ambiguous nucleotides in FASTA file"
 sed -i 's/W/A/g' $OUTPUT_FASTA
 sed -i 's/R/A/g' $OUTPUT_FASTA
@@ -29,4 +28,4 @@ sed -i 's/K/T/g' $OUTPUT_FASTA
 sed -i 's/M/A/g' $OUTPUT_FASTA
 sed -i 's/N/A/g' $OUTPUT_FASTA
 
-echo "Job completed successfully at $(date)"
+
