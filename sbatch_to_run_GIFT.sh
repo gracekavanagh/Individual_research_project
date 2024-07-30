@@ -26,7 +26,7 @@ python3 /gpfs01/home/mbygk5/individual_project/test/physics_GWAS_OOP.py \
     -p Phenotype \
     -o /gpfs01/home/mbygk5/individual_project/test/output.csv
 
-# Run R scripts
+#run R scripts
 Rscript /gpfs01/home/mbygk5/individual_project/test/output_absolute_theta.R
 Rscript /gpfs01/home/mbygk5/individual_project/test/output_pSNP4.R
 Rscript /gpfs01/home/mbygk5/individual_project/test/output_pSNP5.R
