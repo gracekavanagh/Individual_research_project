@@ -110,7 +110,7 @@ conda create -n combined_env -c bioconda gatk4 samtools bcftools
 
 conda create --name slim_env python=3.8
 
-Activate the new environment
+#activate the new environment
 conda activate slim_env
 
 #wouldnt work with conda install initially so doing this extra step 
@@ -118,10 +118,10 @@ conda activate slim_env
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 
-# Step 2: Install SLiM from conda-forge
+# install SLiM from conda-forge
 conda install -c conda-forge slim
 
-# Verify the installation
+# verify the installation
 slim --version
 
 
@@ -132,12 +132,12 @@ slim --version
 
 
 
-# Create the Conda environment
+# create  Conda environment
 conda create -n GIFT_env python=3.8
 
-# Activate the Conda environment
+# activate the environment
 conda activate GIFT_env
 
-# Install the required packages
+# install the packages we requireed
 conda install -c conda-forge pandas numpy scipy
 
